@@ -5,15 +5,15 @@ import { make } from "@effect/sql-drizzle/Sqlite";
 import { SqliteClient } from "@effect/sql-sqlite-bun";
 import { Config, Context, Layer } from "effect";
 
-import { schema, type Schema } from "./schemas";
+import { type Schema, schema } from "./schemas";
 
 const SqliteLive = SqliteClient.layerConfig({
-	filename: Config.string("DB_FILE_NAME"),
+  filename: Config.string("DB_FILE_NAME"),
 });
 
 export class SqliteDrizzle extends Context.Tag("ganza/sql-drizzle/Sqlite")<
-	SqliteDrizzle,
-	SqliteRemoteDatabase<Schema>
+  SqliteDrizzle,
+  SqliteRemoteDatabase<Schema>
 >() {}
 
 const DrizzleLive = Layer.scoped(SqliteDrizzle, make({ schema }));

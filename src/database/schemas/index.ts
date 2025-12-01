@@ -1,7 +1,7 @@
 import { usersTable } from "./schema.js";
 
 export const schema = {
-	usersTable,
+  usersTable,
 };
 
 export type Schema = typeof schema;
